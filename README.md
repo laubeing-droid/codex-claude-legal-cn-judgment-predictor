@@ -3,7 +3,7 @@
 > 中国法裁判预测框架 — 输入案件事实，输出结构化判决预测
 
 基于三角色对抗辩论（原告/被告→法官综合裁决），纯 Prompt 驱动，无需模型训练。
-与 [Claude-for-Legal-CN](https://github.com/laubeing-droid/Claude-for-Legal-CN-to-Codex) 知识库和 [MCP Hub](https://github.com/laubeing-droid/Codex-Claude-legal-cn-mcp-hub) 联动。
+与 [laubeing-droid/Claude-for-Legal-CN-to-Codex](https://github.com/laubeing-droid/Claude-for-Legal-CN-to-Codex) 知识库和 [laubeing-droid/Codex-Claude-legal-cn-mcp-hub](https://github.com/laubeing-droid/Codex-Claude-legal-cn-mcp-hub) 联动。
 
 ## 工作流
 
@@ -42,8 +42,8 @@
 
 | 依赖 | 仓库 | 用途 |
 |:-----|:-----|:-----|
-| 知识库 | [Claude-for-Legal-CN](https://github.com/laubeing-droid/Claude-for-Legal-CN-to-Codex) | 法条要件 + 阻断概念 + 推理链 |
-| MCP 工具 | [MCP Hub](https://github.com/laubeing-droid/Codex-Claude-legal-cn-mcp-hub) | 类案检索 + 法条核验 |
+| 知识库 | [laubeing-droid/Claude-for-Legal-CN-to-Codex](https://github.com/laubeing-droid/Claude-for-Legal-CN-to-Codex) | 法条要件 + 阻断概念 + 推理链 |
+| MCP 工具 | [laubeing-droid/Codex-Claude-legal-cn-mcp-hub](https://github.com/laubeing-droid/Codex-Claude-legal-cn-mcp-hub) | 类案检索 + 法条核验 |
 
 ## 使用
 

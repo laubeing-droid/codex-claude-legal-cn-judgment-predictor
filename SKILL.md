@@ -3,7 +3,7 @@ name: legal-judgment-predictor
 description: >
   中国法裁判预测框架。输入案件事实，输出法条预测、胜败方向、量刑/金额区间、
   置信度及推理链。基于三角色对抗辩论（原告/被告→法官综合裁决）。
-  引用 Claude-for-Legal-CN 知识库进行法律知识注入。
+  引用 laubeing-droid/Claude-for-Legal-CN-to-Codex 知识库进行法律知识注入。
 argument-hint: '[案件事实描述 | 案由 + 关键事实]'
 ---
 
