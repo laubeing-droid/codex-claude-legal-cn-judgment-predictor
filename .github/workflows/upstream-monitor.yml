@@ -1,0 +1,53 @@
+﻿name: Upstream Monitor
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly Monday 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-upstreams:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check reference upstreams for new commits
+        run: |
+          repos=(
+            "ZhouZiai/Multi-agent-system-for-legal-judgment_"
+            "zhang17173/Event-Extraction"
+            "jiangxia/ai-trial"
+            "shwann/LexSim"
+            "nexorin9/medical-trial-simulator"
+          )
+
+          echo "## Upstream Monitor Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Project | Latest Commit | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|---------------|--------|" >> $GITHUB_STEP_SUMMARY
+
+          changes=0
+          for repo in "${repos[@]}"; do
+            commit=$(gh api "repos/$repo/commits/HEAD" --jq '.sha[0:7]' 2>/dev/null || echo "N/A")
+            date=$(gh api "repos/$repo/commits/HEAD" --jq '.commit.committer.date[0:10]' 2>/dev/null || echo "N/A")
+            echo "| $repo | $commit ($date) | checked |" >> $GITHUB_STEP_SUMMARY
+
+            # Compare with stored snapshot
+            snapshot_file=".github/upstream-snapshots/${repo//\//_}.txt"
+            mkdir -p .github/upstream-snapshots
+            if [ -f "$snapshot_file" ]; then
+              prev=$(cat "$snapshot_file")
+              if [ "$commit" != "$prev" ] && [ "$commit" != "N/A" ]; then
+                echo "::warning:: $repo has new commits: $prev -> $commit"
+                changes=$((changes + 1))
+              fi
+            fi
+            echo "$commit" > "$snapshot_file"
+          done
+
+          if [ $changes -gt 0 ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**$changes upstream(s) have new commits. Review manually.**" >> $GITHUB_STEP_SUMMARY
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
