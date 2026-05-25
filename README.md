@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 version: 1.0.2
 module: judgment-predictor
 status: active
@@ -20,7 +20,7 @@ status: active
 
 - **对抗求真**：让 AI 分别扮演原告方、被告方、法官三个角色，通过多轮辩论碰撞出更接近真实裁判的预测结果
 - **纯 Prompt 驱动**：所有逻辑通过提示词模板编排，零模型训练/微调，易于维护和迭代
-- **深度联动**：对接自有法律知识库（法条要件、阻断概念、推理链）和 MCP 工具（类案检索、法条核验），确保预测有据可依
+- **深度联动**：对接 [codex-claude-legal-cn-core-codices](https://github.com/laubeing-droid/codex-claude-legal-cn-core-codices)（162部法条要件、阻断概念、推理链）和 MCP 工具（类案检索、法条核验），确保预测有据可依
 - **结构化输出**：从案件要素抽取到判决预测再到自评报告，全链路标准化
 
 ---
