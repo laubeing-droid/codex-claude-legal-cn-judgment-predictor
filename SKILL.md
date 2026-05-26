@@ -1,4 +1,4 @@
-﻿---
+---
 name: legal-judgment-predictor
 description: >
   中国法裁判预测框架。输入案件事实，输出结构化判决预测报告（法条 + 胜败方向 +
@@ -6,6 +6,7 @@ description: >
   支持民事/刑事/行政三类案由。
 argument-hint: '[案由] [案件事实描述]'
 version: 1.0.1
+platforms: [codex, claude-code, workbuddy, trae]
 module: judgment-predictor
 status: active
 ---
